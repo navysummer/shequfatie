@@ -5,7 +5,7 @@ import time
 import pymongo
 import requests
 from bs4 import BeautifulSoup
-from shequ import Qqw,Hongchen,Mengxue,Shiguang,Txqq,Xingangwan,Yuluohongchen,Zimeng,I8
+from shequ import Qqw,Hongchen,Mengxue,Shiguang,Txqq,Xingangwan,Yuluohongchen,Zimeng,I8,Qianxiaoyanran
 
 class SQ(object):
     """docstring for Fatie"""
@@ -20,11 +20,12 @@ class SQ(object):
         self.hongchen = Hongchen('10137','xia990722')
         self.mengxue = Mengxue('11377','xia990722')
         self.shiguang = Shiguang('888888','xia990722')
-        self.txqq = Txqq('72365','xia990722')
+        #self.txqq = Txqq('72365','xia990722')
         self.xingangwan = Xingangwan('12200','xia990722')
         self.yuluohongchen = Yuluohongchen('1001','xia990722')
         self.zimeng = Zimeng('10129','xia990722')
         # self.i8 = I8('navysummer','xia990722')
+        self.qxyr = Qianxiaoyanran('10198','xia990722')
 
 
     def operate(self):
@@ -44,14 +45,16 @@ class SQ(object):
         print({'url':mengxue_info.url,'status':mengxue_info.text.find(u'\u6210\u529f')})
         shiguang_info = self.shiguang.fatie(title,content)
         print({'url':shiguang_info.url,'status':shiguang_info.text.find(u'\u6210\u529f')})
-        txqq_info = self.txqq.fatie(title,content)
-        print({'url':txqq_info.url,'status':txqq_info.text.find(u'\u6210\u529f')})
+        #txqq_info = self.txqq.fatie(title,content)
+        #print({'url':txqq_info.url,'status':txqq_info.text.find(u'\u6210\u529f')})
         xingangwan_info = self.xingangwan.fatie(title,content)
         print({'url':xingangwan_info.url,'status':xingangwan_info.text.find(u'\u6210\u529f')})
         yuluohongchen_info = self.yuluohongchen.fatie(title,content)
         print({'url':yuluohongchen_info.url,'status':yuluohongchen_info.text.find(u'\u6210\u529f')})
         zimeng_info = self.zimeng.fatie(title,content)
         print({'url':zimeng_info.url,'status':zimeng_info.text.find(u'\u6210\u529f')})
+        qianxiaoyanran_info = self.qxyr.fatie(title,content)
+        print({'url':qianxiaoyanran_info.url,'status':qianxiaoyanran_info.text.find(u'\u6210\u529f')})
         self.article.update_one({'title':title},{ "$set": {'status':1} })
 
 
