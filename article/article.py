@@ -66,7 +66,7 @@ class Arctle(object):
         rt.encoding='gb2312'
         asoup = BeautifulSoup(rt.text,'lxml')
         viewbox = asoup.find('div',class_='viewbox')
-        title = viewbox.find('div',class_='title').find('h2').text
+        title = '<<%s>>%s'%(name,viewbox.find('div',class_='title').find('h2').text)
         content = viewbox.find('div',class_='content').find('table').text
         print('--------------------------------------------')
         print(url)
@@ -77,7 +77,8 @@ class Arctle(object):
         arctle_info = {
             'title':title,
             'content':content,
-            'type':aticle_type
+            'type':aticle_type,
+            'status':0
         }
         x = self.article.insert_one(arctle_info)
         print(x.inserted_id)

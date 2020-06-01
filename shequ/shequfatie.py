@@ -31,7 +31,7 @@ class SQ(object):
     def operate(self):
         article = self.article.find_one({'status':0},{ "_id": 0, "title": 1, "content": 1,"status":1 })
         if article:
-            self.fatie(article['title'],article['content'].replace('\n','{br}        '))
+            self.fatie(article['title'],article['content'].replace('\n','{br}        ').replace('\r','{br}        '))
 
 
     def fatie(self,title,content):
