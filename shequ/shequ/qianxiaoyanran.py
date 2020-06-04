@@ -55,3 +55,13 @@ class Qianxiaoyanran(object):
         r = requests.post(fatie_url,cookies=self.cookies,data=fatie_data)
         return r
 
+    def huitie(self,tid,content):
+        huitie_url='%s/xml/bbs/reply_add.aspx?id=%s'%(self.url,tid)
+        huitie_data = {
+            'act': 'ok',
+            'cont': content,
+            'g': '发表'
+        }
+        r = requests.post(huitie_url,cookies=self.cookies,data=huitie_data)
+        return r
+
