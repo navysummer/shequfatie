@@ -34,7 +34,7 @@ class Qqw(object):
 
 
     def fatie(self,title,content):
-        fatie_url=self.url+'/bbs/topic_add.aspx?id=97018'
+        fatie_url=self.url+'/bbs/topic_add.aspx?id=2'
         fatie_data = {
             'name':title,
             'dtext':content,
